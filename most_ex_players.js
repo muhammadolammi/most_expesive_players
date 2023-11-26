@@ -1,6 +1,6 @@
 const {JSDOM} = require("jsdom")
 
-async function getTableDataFromHtml(htmlBody, tableClass){
+async function getMostExpensivePlayers(htmlBody, tableClass){
      let res = await fetch ('https://www.transfermarkt.com/marktwertetop/wertvollstespieler')
      htmlBody = await res.text()
      tableClass = 'items'
@@ -14,13 +14,20 @@ async function getTableDataFromHtml(htmlBody, tableClass){
         table.querySelectorAll('tr').forEach((row, rowIndex) => {
             //access the iner table
             row.querySelectorAll('table.inline-table').forEach((inlineTable, inlineTableIndex) =>{
-
+//get the image
              let img=  inlineTable.querySelector('img')
-             
+             //push image details
              
                 let img_row = {}
                 img_row['src'] = img.src
                 img_row['name'] = img.title
+                
+                //lets get player position and push to the details
+                inlineTable.querySelectorAll('tr').forEach((tr, trIndex)=>{
+                    if(trIndex ==1){
+                        img_row['position'] = tr.querySelector('td').textContent
+                    }
+                });
                 playerDetails.push(img_row)
 
              
@@ -29,8 +36,9 @@ async function getTableDataFromHtml(htmlBody, tableClass){
     } else {
         console.log('Table not found');
     }
+    console.log(playerDetails)
 return (playerDetails)
 
 }
 
-getTableDataFromHtml()
+getMostExpensivePlayers()
