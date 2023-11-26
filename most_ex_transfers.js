@@ -31,7 +31,7 @@ async function mostExTransfers(){
         playersDetails.push(trRow)
         });
 
-        console.log(playersDetails)
+        return playersDetails
     }catch(err){
         console.log(`try/catch err ${err.message}`)
     }

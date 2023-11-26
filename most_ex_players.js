@@ -20,13 +20,13 @@ async function getMostExpensivePlayers(){
             //push image details
             
                let img_row = {}
-               img_row['src'] = img.src
-               img_row['name'] = img.title
+               img_row['Src'] = img.src
+               img_row['Player-Name'] = img.title
                
                //lets get player position and push to the details
                inlineTable.querySelectorAll('tr').forEach((tr, trIndex)=>{
                    if(trIndex ==1){
-                       img_row['position'] = tr.querySelector('td').textContent
+                       img_row['Position'] = tr.querySelector('td').textContent
                    }
                });
                playerDetails.push(img_row)
@@ -38,7 +38,7 @@ async function getMostExpensivePlayers(){
    } else {
        console.log('Table not found');
    }
-   console.log(playerDetails)
+   
    return (playerDetails)
 }catch(err){
     console.log(`try/catch err ${err.message}`)
