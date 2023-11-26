@@ -47,4 +47,9 @@ async function getMostExpensivePlayers(){
 
 }
 
-getMostExpensivePlayers()
+
+
+
+module.exports = {
+    getMostExpensivePlayers
+}

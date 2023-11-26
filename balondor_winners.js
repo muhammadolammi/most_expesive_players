@@ -1,6 +1,6 @@
 const {JSDOM} = require("jsdom")
 
-async function ballondorWinners(){
+async function getBallondorWinners(){
     try{
         let res = await fetch('https://www.topendsports.com/sport/soccer/list-player-of-the-year-ballondor.htm')
         let htmlBody =await res.text()
@@ -51,4 +51,6 @@ async function ballondorWinners(){
     
 }
 
-ballondorWinners()
+module.exports={
+    getBallondorWinners
+}

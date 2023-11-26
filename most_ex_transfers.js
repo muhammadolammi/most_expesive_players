@@ -39,5 +39,7 @@ async function mostExTransfers(){
     
 }
 
-mostExTransfers()
+module.exports={
+    mostExTransfers
+}
 
